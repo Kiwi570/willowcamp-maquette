@@ -1,0 +1,11 @@
+Bibliotheques hebergees avec le site (aucune etape de construction)
+
+- GSAP 3.15.0 (gsap, ScrollTrigger, SplitText, DrawSVGPlugin, MorphSVGPlugin, MotionPathPlugin, CustomEase)
+  Source : github.com/greensock/GSAP (dossier dist). Licence GSAP Standard "no charge" : https://gsap.com/standard-license
+- OGL 1.0.11 (modules core, math, Flowmap, Triangle) pour l effet « ronds dans l etang »
+  Source : github.com/oframe/ogl (dossier src). Licence MIT.
+- Defilement fluide : assets/js/lissage.js, ecrit pour la maquette dans l esprit de Lenis
+  (Lenis n a pas pu etre recupere sous forme compilee).
+
+Polices (assets/fonts), sous-ensemble latin au format WOFF, licence SIL Open Font License :
+Fraunces, Karla, Reenie Beanie (github.com/google/fonts).
