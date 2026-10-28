@@ -94,12 +94,50 @@
     entete.classList.remove('est-cache');
     if (G && !calme) G.from($$('li, .menu-mobile__bas > *', menu), { y: 28, opacity: 0, stagger: .05, duration: .6 });
     var premier = $('a', menu); premier && premier.focus();
+    majBarre();
   }
   function fermerMenu() {
     if (!menuOuvert) return; menuOuvert = false; menu.hidden = true; burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; if (lisse) lisse.start();
+    majBarre();
   }
   burger && burger.addEventListener('click', function () { menuOuvert ? (fermerMenu(), burger.focus()) : ouvrirMenu(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOuvert) { fermerMenu(); burger.focus(); } });
+
+  /* ---------- Hauteurs réelles de l'en-tête et de la barre du bas ---------- */
+  function mesurerBarres() {
+    if (entete) html.style.setProperty('--entete-h', $('.entete__barre', entete).offsetHeight + 'px');
+    html.style.setProperty('--barres-h', (barre && getComputedStyle(barre).display !== 'none' ? barre.offsetHeight : 0) + 'px');
+  }
+
+  /* ---------- Barre du bas (téléphone) : Réserver et Appeler, repris de la page ---------- */
+  var barre = null, vus = { hero: true, pied: false, form: false };
+  var lienResa = $('.entete__outils > .bouton'), lienTel = $('a[href^="tel:"]');
+  if (lienResa && lienTel) {
+    barre = document.createElement('nav');
+    barre.className = 'barre-bas';
+    barre.setAttribute('aria-label', { nl: 'Snelle acties', en: 'Quick actions' }[WC.lang] || 'Actions rapides');
+    var resa = lienResa.cloneNode(true); resa.className = 'bouton bouton--encre';
+    var tel = document.createElement('a'); tel.className = 'bouton bouton--trait'; tel.href = lienTel.getAttribute('href');
+    tel.textContent = { nl: 'Bellen', en: 'Call' }[WC.lang] || 'Appeler';
+    barre.appendChild(resa); barre.appendChild(tel);
+    document.body.appendChild(barre);
+    html.classList.add('barre-active');
+    var suivre = function (el, cle) {
+      if (!el) return;
+      new IntersectionObserver(function (en) { vus[cle] = en[0].isIntersecting; majBarre(); }).observe(el);
+    };
+    suivre($('main > section'), 'hero'); suivre($('.pied'), 'pied'); suivre($('form'), 'form');
+  }
+  function majBarre() {
+    if (!barre) return;
+    var montrer = !vus.hero && !vus.pied && !vus.form && !menuOuvert;
+    barre.classList.toggle('est-visible', montrer);
+    if (montrer) barre.removeAttribute('inert'); else barre.setAttribute('inert', '');
+  }
+  majBarre();
+  mesurerBarres();
+  if (window.ResizeObserver) { var ro = new ResizeObserver(mesurerBarres); entete && ro.observe(entete); barre && ro.observe(barre); }
+  else window.addEventListener('resize', mesurerBarres);
 
   /* ---------- Copier ---------- */
   $$('[data-copier]').forEach(function (b) {

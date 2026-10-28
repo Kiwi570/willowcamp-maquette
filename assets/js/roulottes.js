@@ -126,7 +126,8 @@
     tl.to(ext, { drawSVG: '100%', stagger: .05, duration: 1 })
       .to(int, { drawSVG: '100%', stagger: .03, duration: 1 }, .6)
       .to(guides, { opacity: 1, stagger: .1, duration: .3 }, 1.4);
-    if (window.innerWidth > 900) tl.to(labels, { opacity: 1, y: 0, stagger: .12, duration: .4 }, 1.5);
+    // libellés révélés une fois, quand la coupe est bien dans l'écran (pas au bout du scrub)
+    if (window.innerWidth > 900) ScrollTrigger.create({ trigger: coupe, start: 'top 60%', once: true, onEnter: function () { G.to(labels, { opacity: 1, y: 0, stagger: .12, duration: .6 }); } });
   }
 
   /* ---------- Les quatre roulottes : galerie horizontale épinglée ---------- */
@@ -134,7 +135,7 @@
   if (piste && window.innerWidth > 900) {
     var sect = piste.parentNode;
     var dist = function () { return Math.max(0, piste.scrollWidth - window.innerWidth); };
-    G.to(piste, { x: function () { return -dist(); }, ease: 'none', scrollTrigger: { trigger: sect, start: 'top top', end: function () { return '+=' + dist(); }, pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1 } });
+    G.to(piste, { x: function () { return -dist(); }, ease: 'none', scrollTrigger: { trigger: sect, start: 'top top', end: function () { return '+=' + dist(); }, pin: true, scrub: 1, invalidateOnRefresh: true } });
   }
   $$('.essence').forEach(function (e) {
     var ps = $$('.essence__feuille path, .essence__feuille ellipse', e);

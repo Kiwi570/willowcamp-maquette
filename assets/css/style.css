@@ -78,7 +78,7 @@ button { font: inherit; color: inherit; }
 :focus-visible { outline: 2.5px solid var(--rouille); outline-offset: 3px; border-radius: 3px; }
 [hidden] { display: none !important; }
 .sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-.selectionnable { user-select: text; -webkit-user-select: text; }
+.selectionnable { user-select: text; -webkit-user-select: text; overflow-wrap: anywhere; }
 
 .evitement { position: fixed; left: 16px; top: -60px; z-index: 200; background: var(--encre); color: var(--papier); padding: .6rem 1rem; border-radius: 4px; text-decoration: none; }
 .evitement:focus { top: calc(env(safe-area-inset-top, 0px) + 12px); }
@@ -229,9 +229,11 @@ html.js.transition-entree .feuille-transition { transform: translateY(0); }
 .menu-mobile ol { list-style: none; margin: 0; padding: 0; counter-reset: m; display: grid; gap: .3rem; }
 .menu-mobile li { counter-increment: m; display: flex; align-items: baseline; gap: .8rem; }
 .menu-mobile li::before { content: counter(m); font-family: var(--f-main); font-size: 1.6rem; color: var(--saule); width: 1.2rem; }
-.menu-mobile a { font-family: var(--f-titre); font-size: clamp(1.9rem, 8vw, 2.6rem); text-decoration: none; line-height: 1.25; }
-.menu-mobile__bas { display: grid; gap: 1.2rem; margin-top: 2rem; }
-.menu-mobile__bas .langues { font-size: 1rem; }
+.menu-mobile ol a { font-family: var(--f-titre); font-size: clamp(1.9rem, 8vw, 2.6rem); text-decoration: none; line-height: 1.25; }
+.menu-mobile__bas { display: grid; gap: 1.2rem; margin-top: 2rem; justify-items: start; min-width: 0; }
+.menu-mobile__bas .langues { font-size: 1rem; flex-wrap: wrap; }
+.menu-mobile__bas .langues a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: .6rem; }
+.menu-mobile__bas .bouton { max-width: 100%; }
 
 /* ========== Sections ========== */
 main > section { position: relative; padding-block: var(--section); overflow-x: clip; }
@@ -275,7 +277,7 @@ main > section { position: relative; padding-block: var(--section); overflow-x: 
 .ticket::before { left: -8px; clip-path: inset(0 0 0 50%); }
 .ticket::after { right: -8px; clip-path: inset(0 50% 0 0); }
 .ticket__cadran { width: 62px; height: 62px; flex: none; }
-.ticket__titre { font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--encre-douce); }
+.ticket__titre { font-size: max(12px, .74rem); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--encre-douce); }
 .ticket__etat { font-family: var(--f-titre); font-size: 1.12rem; line-height: 1.2; }
 .ticket__suite { font-size: .88rem; color: var(--encre-douce); }
 .etat-ouvert { color: var(--saule-fonce); }
@@ -334,7 +336,7 @@ html:not(.js) .planche .croquis:not([data-croquis="tente"]), html.calme .planche
 .facons__note { margin-top: -2rem; }
 .grille-tarif { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: .95rem; }
 .grille-tarif th, .grille-tarif td { padding: .42rem .5rem; border-bottom: 1px solid var(--trait); text-align: center; }
-.grille-tarif thead th { font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--encre-douce); }
+.grille-tarif thead th { font-size: max(12px, .74rem); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--encre-douce); }
 .grille-tarif tbody th { text-align: left; font-weight: 600; font-size: .9rem; }
 .grille-tarif tbody th small { display: block; font-weight: 400; color: var(--encre-douce); font-size: .78rem; }
 .grille-tarif td { font-family: var(--f-titre); font-size: 1.08rem; white-space: nowrap; }
@@ -400,7 +402,7 @@ html:not(.js) .planche .croquis:not([data-croquis="tente"]), html.calme .planche
 .presse .titre-section { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
 .coupures { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1.4rem, 2.6vw, 2.4rem); align-items: start; }
 .coupure { --r: 0deg; position: relative; padding: 1.5rem 1.3rem 1.4rem; background: var(--papier-clair); border: 1px solid var(--trait); transform: rotate(var(--r)); display: grid; gap: .8rem; box-shadow: 0 14px 30px -22px var(--ombre); }
-.coupure__src { font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--encre-douce); }
+.coupure__src { font-size: max(12px, .74rem); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--encre-douce); }
 .coupure__titre { font-family: var(--f-titre); font-size: 1.32rem; line-height: 1.2; }
 .coupure--vide { background: transparent; border: 1.5px dashed rgba(59,47,37,.3); box-shadow: none; }
 .coupure--label { justify-items: center; text-align: center; }
@@ -568,7 +570,7 @@ html.calme .r-hero__rideau, html:not(.js) .r-hero__rideau { display: none; }
 .coupe__svg { width: 100%; height: auto; overflow: visible; fill: none; stroke: var(--encre); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .coupe__svg circle, .coupe__svg ellipse { fill: none; }
 .coupe__guides path { stroke: var(--saule-fonce); stroke-width: 1.3; stroke-dasharray: 2 5; }
-.coupe__label { position: absolute; left: var(--x); top: var(--y); font-size: clamp(1.25rem, 2vw, 1.8rem); max-width: 15em; }
+.coupe__label { position: absolute; left: var(--x); top: var(--y); font-size: clamp(1.25rem, 2vw, 1.8rem); max-width: 11em; }
 .coupe figcaption { text-align: center; margin-top: 1rem; }
 .interieur__photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.4rem, 3vw, 3rem); margin-top: clamp(2rem, 4vw, 3rem); align-items: start; }
 .interieur__photos .tirage:nth-child(2) { margin-top: 3rem; }
@@ -584,6 +586,23 @@ html.calme .r-hero__rideau, html:not(.js) .r-hero__rideau { display: none; }
 .essence__nom { font-size: clamp(2.4rem, 4vw, 3.2rem); font-style: italic; font-weight: 330; font-variation-settings: "SOFT" 100, "WONK" 1; }
 .essence__pers { font-weight: 700; }
 .essence__photo img { aspect-ratio: 4 / 3; object-fit: cover; }
+/* Portable : photo du hero bornée à la hauteur d'écran (titre visible au premier écran),
+   galerie épinglée qui tient dans l'écran sous l'en-tête mesuré (--entete-h). */
+@media (min-width: 901px) {
+  .r-hero__photo { height: clamp(260px, min(62vw, 100svh - var(--entete) - 14rem), 720px); }
+  .quatre { height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-block: calc(var(--entete-h, var(--entete)) + 1rem) calc(var(--barres-h, 0px) + 1.5rem) !important; }
+  .quatre__piste { flex: 1; min-height: 0; max-height: 46rem; }
+  .essence { display: flex; flex-direction: column; min-height: 0; }
+  .essence__feuille { flex: none; width: auto; height: min(221px, 20svh); }
+  .essence__photo { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .essence__photo img { flex: 1; min-height: 0; height: 100%; aspect-ratio: auto; }
+}
+@media (min-width: 901px) and (max-height: 600px) {
+  .quatre .titre-section { font-size: clamp(2rem, 4vw, 3rem); }
+  .essence { padding: 1rem; gap: .6rem; }
+  .essence__nom { font-size: 2rem; }
+  .essence__feuille { height: 16svh; }
+}
 .tarifs-r__grille { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
 .registre { background: var(--papier-clair); border: 1px solid var(--trait); padding: clamp(1.2rem, 3vw, 2.4rem); display: grid; gap: 1rem;
   background-image: repeating-linear-gradient(transparent 0 39px, rgba(122,139,90,.22) 39px 40px); }
@@ -614,7 +633,7 @@ html.calme .r-hero__rideau, html:not(.js) .r-hero__rideau { display: none; }
 .cal__nav { width: 40px; height: 40px; border: 1px solid var(--trait); background: var(--papier); border-radius: 50%; cursor: pointer; font-size: 1.1rem; }
 .cal__nav:disabled { opacity: .3; cursor: default; }
 .cal__grille { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; }
-.cal__jsem { text-align: center; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--encre-douce); padding: .2rem 0; }
+.cal__jsem { text-align: center; font-size: max(12px, .72rem); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--encre-douce); padding: .2rem 0; }
 .cal__jour { aspect-ratio: 1; border: 0; background: transparent; border-radius: 50%; cursor: pointer; font-variant-numeric: tabular-nums; font-size: .95rem; min-height: 36px; position: relative; }
 .cal__jour:hover:not(:disabled) { background: rgba(122,139,90,.18); }
 .cal__jour:disabled { color: rgba(59,47,37,.28); cursor: default; }
@@ -808,9 +827,59 @@ html.js.anime-pret [data-apparait] { will-change: transform, opacity; }
   .carte__fond { display: none; }
   .plan__loupe-btn { position: sticky; left: .6rem; bottom: .6rem; margin-top: .6rem; }
 }
+@media (max-width: 400px) {
+  .grille-tarif th, .grille-tarif td { padding-inline: .2rem; }
+  .grille-tarif thead th { letter-spacing: .02em; }
+  .grille-tarif td { font-size: 1rem; }
+}
+
+/* ========== Cibles tactiles (téléphone et tablette) ========== */
+@media (max-width: 900px) {
+  .entete__logo { display: flex; align-items: center; min-height: 44px; }
+  .bouton-son { min-height: 44px; min-width: 44px; justify-content: center; }
+  .langues a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
+  .bouton--petit { min-height: 44px; }
+  .interrupteur { min-height: 44px; }
+  .cal__nav { width: 44px; height: 44px; }
+  .compteur__ctrl input { width: 2.75rem; height: 44px; }
+  .copier { min-height: 44px; min-width: 44px; }
+  /* Liens isolés : zone de 44 px sans changer la hauteur de ligne */
+  .coord a, .copier, .coupure .lien-plume, .balades li a, .docs .lien-plume, .plan__liste .lien-plume, .pied__liste a, .pied__col > p.selectionnable > a, .ensemble p > a.lien-plume:only-child {
+    display: inline-flex; align-items: center; min-height: 44px; margin-block: calc((1lh - 44px) / 2);
+  }
+  .coupure .lien-plume::after, .balades li a::after, .docs .lien-plume::after, .plan__liste .lien-plume::after, .pied__liste a::after, .ensemble p > a.lien-plume:only-child::after { bottom: calc((44px - 1lh) / 2 - .28em); }
+  /* Cases à cocher : 44 px de zone, 22 px dessinés */
+  .case input { -webkit-appearance: none; appearance: none; width: 44px; height: 44px; margin: -11px; flex: none; cursor: pointer; border-radius: 4px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'><rect x='1' y='1' width='20' height='20' rx='3' fill='%23FBF8F1' stroke='%233B2F25' stroke-width='1.6'/></svg>") center / 22px 22px no-repeat; }
+  .case input:checked { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'><rect x='1' y='1' width='20' height='20' rx='3' fill='%234C5C35' stroke='%234C5C35' stroke-width='1.6'/><path d='M6 11.5l3.4 3.4L16 7.6' fill='none' stroke='%23FBF8F1' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>"); }
+}
+@media (max-width: 640px) {
+  /* Calendrier pleine largeur : sept jours de 44 px dès 320 px */
+  .calendrier { margin-inline: calc(-1 * max(var(--gouttiere), min(48px, 5vw))); max-width: none; border-inline: 0; padding-inline: 0; }
+  .cal__tete { padding-inline: .6rem; }
+  .cal__grille { gap: 0; }
+  .cal__jour { aspect-ratio: auto; min-height: 44px; }
+}
+
+/* ========== Barre du bas (téléphone) ========== */
+.barre-bas { display: none; }
+@media (max-width: 640px) {
+  .barre-bas { position: fixed; left: 0; right: 0; bottom: 0; z-index: 44; display: flex; gap: .6rem; padding: .6rem max(var(--gouttiere), 12px) calc(.6rem + env(safe-area-inset-bottom, 0px)) max(var(--gouttiere-d), 12px);
+    background: rgba(243, 238, 227, .96); border-top: 1px solid var(--trait); box-shadow: 0 -10px 24px -18px var(--ombre);
+    transform: translateY(110%); visibility: hidden; transition: transform .45s var(--ease), visibility 0s linear .45s; }
+  .barre-bas.est-visible { transform: none; visibility: visible; transition: transform .45s var(--ease), visibility 0s; }
+  .barre-bas .bouton { flex: 1; min-height: 44px; padding-inline: .8rem; }
+  html.barre-active .pied__mentions { padding-bottom: calc(var(--barres-h, 0px) + 1.8rem + env(safe-area-inset-bottom, 0px)); }
+}
 
 /* ========== Mode calme ========== */
 html.calme *, html.calme *::before, html.calme *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 html.calme .hero__notes, html.calme .hero__note { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { html:not(.js) * { transition: none !important; animation: none !important; } }
 .carte__fond .provisoire__note { display: none; }
+
+/* ========== Page 404 ========== */
+.introuvable { min-height: 70svh; display: flex; align-items: center; }
+.introuvable .c-hero__texte { max-width: 40rem; }
+.page-404 .entete { position: relative; top: 0; }
+.page-404 .introuvable { padding-top: clamp(1.5rem, 4vw, 3rem) !important; }
