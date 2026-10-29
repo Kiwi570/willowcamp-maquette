@@ -38,9 +38,6 @@
   var sauleHero = $('[data-saule="hero"]');
   var brinsHero = sauleHero ? D.saule(sauleHero, { n: 22, seed: 5, feuille: 30, pas: 15, longueur: function (t) { return t < .4 ? [.05, .14] : (t < .5 ? [.2, .45] : [.35, .8]); } }) : [];
   WC.brinsHero = brinsHero;
-  function peindreTout() { $$('.provisoire').forEach(function (b) { D.peindre(b); }); }
-  peindreTout();
-  var rTimer; window.addEventListener('resize', function () { clearTimeout(rTimer); rTimer = setTimeout(peindreTout, 300); });
 
   /* ---------- Défilement fluide ---------- */
   var lisse = (!calme && fin && window.WCLissage) ? new window.WCLissage({ lerp: .1 }) : null;

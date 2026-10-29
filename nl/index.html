@@ -21,7 +21,7 @@
 <link rel="preload" href="../assets/fonts/fraunces.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="../assets/fonts/fraunces-italic.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="../assets/fonts/karla.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="../assets/css/style.css?v=20261028-2">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261029">
 <script>
 (function(){var d=document.documentElement;d.classList.remove('no-js');d.classList.add('js');
 var c=false;try{c=localStorage.getItem('wc-calme');}catch(e){}
@@ -152,7 +152,7 @@ window.WC={lang:"nl",root:"../",t:{"jours": ["zondag", "maandag", "dinsdag", "wo
 <section class="esprit" id="esprit" data-ambiance="prairie" aria-labelledby="esprit-titre">
   <div class="conteneur esprit__grille">
     <div class="esprit__visuel">
-      <div class="provisoire esprit__herbier" data-peindre="herbier" role="img" aria-label=""><canvas aria-hidden="true"></canvas><span class="provisoire__note">visuel provisoire · grok-feuilles-saule-herbier</span></div>
+      <img class="esprit__herbier" src="../assets/img/feuilles-saule-herbier-640.webp" srcset="../assets/img/feuilles-saule-herbier-640.webp 640w, ../assets/img/feuilles-saule-herbier-1168.webp 1168w" sizes="(min-width: 901px) 40vw, 90vw" width="1168" height="784" alt="Een wilgentakje met lange bladeren, plat gelegd op crèmekleurig papier zoals in een herbarium" loading="lazy" decoding="async">
       <figure class="tirage esprit__photo" style="--r:2deg" data-parallaxe="-8">
         <img class="" src="../assets/img/canopee-saule-1024.webp" srcset="../assets/img/canopee-saule-640.webp 640w, ../assets/img/canopee-saule-1024.webp 1024w, ../assets/img/canopee-saule-1600.webp 1600w" sizes="(min-width: 900px) 34vw, 80vw" width="1600" height="899" alt="Wilgentakken van onderen gezien, tegen de lucht" loading="lazy" decoding="async" data-loupe="../assets/img/canopee-saule-1600.webp" >
         <span class="scotch scotch--h" aria-hidden="true"></span>
@@ -454,7 +454,7 @@ window.WC={lang:"nl",root:"../",t:{"jours": ["zondag", "maandag", "dinsdag", "wo
     </header>
     <div class="alentours__grille">
       <figure class="carte">
-        <div class="provisoire carte__fond" data-peindre="hetres" role="img" aria-label=""><canvas aria-hidden="true"></canvas><span class="provisoire__note">visuel provisoire · grok-sous-bois-hetres</span></div>
+        <img class="carte__fond" src="../assets/img/sous-bois-hetres-640.webp" srcset="../assets/img/sous-bois-hetres-640.webp 640w, ../assets/img/sous-bois-hetres-1120.webp 1120w" sizes="(min-width: 901px) 55vw, 100vw" width="1120" height="784" alt="Beukenbos met grijze stammen en een bodem vol afgevallen bladeren" loading="lazy" decoding="async">
         <svg class="carte__svg" viewBox="0 0 800 560" data-carte role="img" aria-label="Schematische kaart, niet op schaal">
           <g class="carte__routes">
             <path d="M0 300 C120 296 200 304 250 300 C320 296 360 300 400 300 C450 304 480 318 500 320 C560 326 620 360 680 400 C720 428 760 470 800 500"/>
@@ -593,7 +593,7 @@ window.WC={lang:"nl",root:"../",t:{"jours": ["zondag", "maandag", "dinsdag", "wo
 </main>
 <footer class="pied" data-ambiance="nuit">
   <div class="pied__nuit">
-    <div class="provisoire pied__image" data-peindre="nuit" role="img" aria-label=""><canvas aria-hidden="true"></canvas><span class="provisoire__note">visuel provisoire · grok-nuit-saules-etoiles</span></div>
+    <picture><source media="(max-width: 640px)" srcset="../assets/img/nuit-saules-etoiles-mobile-480.webp 480w, ../assets/img/nuit-saules-etoiles-mobile-728.webp 728w" sizes="100vw" width="728" height="784"><img class="pied__image" src="../assets/img/nuit-saules-etoiles-1168.webp" srcset="../assets/img/nuit-saules-etoiles-640.webp 640w, ../assets/img/nuit-saules-etoiles-1168.webp 1168w, ../assets/img/nuit-saules-etoiles-1752.webp 1752w" sizes="100vw" width="1752" height="834" alt="Nacht boven een vijver met treurwilgen, een sterrenhemel en vuurvliegjes in het gras" loading="lazy" decoding="async"></picture>
     <canvas class="pied__lucioles" aria-hidden="true"></canvas>
     <div class="pied__texte">
       <p class="pied__titre">Avondklok 22u30.<br><em>De camping slaapt.</em></p>
@@ -656,11 +656,11 @@ window.WC={lang:"nl",root:"../",t:{"jours": ["zondag", "maandag", "dinsdag", "wo
 <script src="../assets/vendor/gsap/MorphSVGPlugin.min.js" defer></script>
 <script src="../assets/vendor/gsap/MotionPathPlugin.min.js" defer></script>
 <script src="../assets/vendor/gsap/CustomEase.min.js" defer></script>
-<script src="../assets/js/lissage.js?v=20261028-2" defer></script>
-<script src="../assets/js/dessins.js?v=20261028-2" defer></script>
-<script src="../assets/js/ambiance.js?v=20261028-2" defer></script>
-<script src="../assets/js/commun.js?v=20261028-2" defer></script>
-<script src="../assets/js/accueil.js?v=20261028-2" defer></script>
-<script type="module" src="../assets/js/etang.js?v=20261028-2"></script>
+<script src="../assets/js/lissage.js?v=20261029" defer></script>
+<script src="../assets/js/dessins.js?v=20261029" defer></script>
+<script src="../assets/js/ambiance.js?v=20261029" defer></script>
+<script src="../assets/js/commun.js?v=20261029" defer></script>
+<script src="../assets/js/accueil.js?v=20261029" defer></script>
+<script type="module" src="../assets/js/etang.js?v=20261029"></script>
 </body>
 </html>
